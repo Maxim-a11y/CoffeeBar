@@ -1,208 +1,137 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kuro Bar - Бронирование мест</title>
-    <link rel="stylesheet" href="css/main.min.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dmi Sushi | Fine Dining</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar">
-            <div class="nav-container">
-                <div class="nav-brand">
-                    <i class="fas fa-cocktail"></i>
-                    <span>Kuro Bar</span>
-                </div>
-                <div class="nav-menu">
-                    <a href="#home" class="nav-link active" data-section="home">
-                        <i class="fas fa-home"></i> Главная
-                    </a>
-                    <a href="#places" class="nav-link" data-section="places">
-                        <i class="fas fa-chair"></i> Места
-                    </a>
-                    <a href="#booking" class="nav-link" data-section="booking">
-                        <i class="fas fa-calendar"></i> Мои бронирования
-                    </a>
-                    <a href="#profile" class="nav-link" data-section="profile">
-                        <i class="fas fa-user"></i> Профиль
-                    </a>
-                    <a href="#api" class="nav-link" data-section="api">
-                        <i class="fas fa-code"></i> API
-                    </a>
-                </div>
-            </div>
-        </nav>
-
-        <main class="main-content">
-            <section id="home-section" class="section active">
-                <div class="container">
-                    <div class="hero">
-                        <h1>Добро пожаловать в Kuro Bar</h1>
-                        <p>Забронируйте место в нашем уютном баре</p>
-                        <div class="hero-stats">
-                            <div class="stat-card">
-                                <i class="fas fa-chair"></i>
-                                <h3>Уютные места</h3>
-                                <p>Комфортные зоны для отдыха</p>
-                            </div>
-                            <div class="stat-card">
-                                <i class="fas fa-clock"></i>
-                                <h3>Гибкое время</h3>
-                                <p>Бронируйте на любое время</p>
-                            </div>
-                            <div class="stat-card">
-                                <i class="fas fa-users"></i>
-                                <h3>Для компании</h3>
-                                <p>Места от 2 до 10 человек</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="places-section" class="section">
-                <div class="container">
-                    <div class="section-header">
-                        <h2>Доступные места</h2>
-                        <p>Выберите подходящее место для вашей компании</p>
-                    </div>
-                    <div class="places-grid" id="places-grid">
-                    </div>
-                </div>
-            </section>
-
-            <section id="booking-section" class="section">
-                <div class="container">
-                    <div class="section-header">
-                        <h2>Мои бронирования</h2>
-                        <button class="btn btn-primary" onclick="showBookingForm()">
-                            <i class="fas fa-plus"></i> Новое бронирование
-                        </button>
-                    </div>
-                    <div class="bookings-list" id="bookings-list">
-                    </div>
-                </div>
-            </section>
-
-            <section id="profile-section" class="section">
-                <div class="container">
-                    <div class="section-header">
-                        <h2>Мой профиль</h2>
-                        <button class="btn btn-primary" onclick="showProfileForm()">
-                            <i class="fas fa-edit"></i> Редактировать профиль
-                        </button>
-                    </div>
-                    <div id="profile-content">
-                    </div>
-                </div>
-            </section>
-
-            <section id="api-section" class="section">
-                <div class="container">
-                    <h2>API Endpoints</h2>
-                    <div class="api-docs">
-                        <div class="endpoint">
-                            <h3>GET /api/health</h3>
-                            <p>Проверка состояния сервера</p>
-                            <button class="btn btn-secondary" onclick="testEndpoint('/health')">Тест</button>
-                        </div>
-                        <div class="endpoint">
-                            <h3>GET /api/places</h3>
-                            <p>Получить список мест</p>
-                            <button class="btn btn-secondary" onclick="testEndpoint('/places')">Тест</button>
-                        </div>
-                        <div class="endpoint">
-                            <h3>POST /api/bookings</h3>
-                            <p>Создать бронирование</p>
-                        </div>
-                        <div class="endpoint">
-                            <h3>GET /api/profile</h3>
-                            <p>Получить профиль пользователя</p>
-                        </div>
-                    </div>
-                    <div id="api-response" class="api-response"></div>
-                </div>
-            </section>
-        </main>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header__inner">
+      <div class="logo">Dmi <span>Sushi</span></div>
+      <nav class="nav">
+        <a href="#">Menu</a>
+        <a href="#">Fine Dining</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </nav>
+      <a href="#" class="btn btn--outline">Reservation</a>
     </div>
+  </header>
 
-    <div id="booking-modal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Новое бронирование</h3>
-                <span class="close" onclick="closeModal('booking-modal')">&times;</span>
-            </div>
-            <form id="booking-form" onsubmit="handleBookingSubmit(event)">
-                <div class="form-group">
-                    <label for="booking-date">Дата:</label>
-                    <input type="date" id="booking-date" name="date" required>
-                </div>
-                <div class="form-group">
-                    <label for="booking-start-time">Время начала:</label>
-                    <input type="time" id="booking-start-time" name="startTime" required>
-                </div>
-                <div class="form-group">
-                    <label for="booking-end-time">Время окончания:</label>
-                    <input type="time" id="booking-end-time" name="endTime" required>
-                </div>
-                <div class="form-group">
-                    <label for="booking-guests">Количество гостей:</label>
-                    <input type="number" id="booking-guests" name="guests" min="1" max="10" required>
-                </div>
-                <div class="form-group">
-                    <label for="booking-notes">Дополнительные пожелания:</label>
-                    <textarea id="booking-notes" name="notes" placeholder="Особые требования, предпочтения..."></textarea>
-                </div>
-                <div class="form-actions">
-                    <button type="button" class="btn btn-secondary" onclick="closeModal('booking-modal')">Отмена</button>
-                    <button type="submit" class="btn btn-primary">Забронировать</button>
-                </div>
-            </form>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <p class="subtitle">Best Sushi In Town</p>
+      <h1 class="title">Taste The Rich Flavor Of<br>High Quality Sushi</h1>
+      <p class="text">We only use the five star quality for our menu, come and get the richness in every food we serve.</p>
+      <a href="#" class="btn btn--primary">Go To Menu</a>
+    </div>
+  </section>
+
+  <!-- Today's Special -->
+  <section class="special">
+    <div class="container">
+      <p class="subtitle">Special Menu</p>
+      <h2 class="section-title">Today's Special</h2>
+      <p class="section-desc">Special menu oftenly comes different everyday, this is our special food for today</p>
+      <div class="cards">
+        <div class="card">
+          <img src="https://i.ibb.co/5nzP9PG/sushi1.jpg" alt="Tuna Sushi">
+          <h3>Tuna Sushi</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <div class="rating">★★★★★</div>
         </div>
-    </div>
-
-    <div id="profile-modal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Редактировать профиль</h3>
-                <span class="close" onclick="closeModal('profile-modal')">&times;</span>
-            </div>
-            <form id="profile-form" onsubmit="handleProfileSubmit(event)">
-                <div class="form-group">
-                    <label for="profile-name">Имя:</label>
-                    <input type="text" id="profile-name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="profile-email">Email:</label>
-                    <input type="email" id="profile-email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="profile-phone">Телефон:</label>
-                    <input type="tel" id="profile-phone" name="phone">
-                </div>
-                <div class="form-actions">
-                    <button type="button" class="btn btn-secondary" onclick="closeModal('profile-modal')">Отмена</button>
-                    <button type="submit" class="btn btn-primary">Сохранить</button>
-                </div>
-            </form>
+        <div class="card">
+          <img src="https://i.ibb.co/vs5Pbc7/sushi2.jpg" alt="Salmon Sushi">
+          <h3>Salmon Sushi</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <div class="rating">★★★★★</div>
         </div>
+        <div class="card">
+          <img src="https://i.ibb.co/MBV3sYN/sushi3.jpg" alt="Just Sushi">
+          <h3>Just Sushi</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <div class="rating">★★★★★</div>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div id="place-details-modal" class="modal">
-        <!-- Содержимое будет добавлено динамически -->
+  <!-- Specialities -->
+  <section class="specialities">
+    <div class="container">
+      <p class="subtitle">Quality Food For You</p>
+      <h2 class="section-title">Our Specialities</h2>
+      <p class="section-desc">Authentic food from our restaurant served with high quality ingredients</p>
+
+      <div class="tabs">
+        <button class="tab active">Specialities</button>
+        <button class="tab">Homestyle Sushi</button>
+        <button class="tab">Steak</button>
+        <button class="tab">With Rice</button>
+        <button class="tab">Cocktails</button>
+        <button class="tab">Wine</button>
+        <button class="tab">Appetizer</button>
+      </div>
+
+      <div class="dishes">
+        <div class="dish">
+          <img src="https://i.ibb.co/5xWBZ6M/sushi4.jpg" alt="Dragon Sushi">
+          <div class="dish__info">
+            <h3>Dragon Sushi</h3>
+            <p>Ingredients: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <span class="price">$50</span>
+          </div>
+        </div>
+
+        <div class="dish">
+          <img src="https://i.ibb.co/MZ03gMz/sushi5.jpg" alt="Creamy Sushi">
+          <div class="dish__info">
+            <h3>Creamy Sushi</h3>
+            <p>Ingredients: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <span class="price">$50</span>
+          </div>
+        </div>
+
+        <div class="dish">
+          <img src="https://i.ibb.co/B3tGZ5x/sushi6.jpg" alt="Roll Salmon Sushi">
+          <div class="dish__info">
+            <h3>Roll Salmon Sushi</h3>
+            <p>Ingredients: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <span class="price">$50</span>
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div id="notifications" class="notifications"></div>
+  <!-- Dining Events -->
+  <section class="events">
+    <div class="container">
+      <p class="subtitle">Choose Your Event</p>
+      <h2 class="section-title">Dining Events</h2>
+      <p class="section-desc">We provide dining event for your special day with your important people</p>
 
-    <script src="js/app.js"></script>
-    <script src="js/api.js"></script>
-    <script src="js/places.js"></script>
-    <script src="js/tasks.js"></script>
-    <script src="js/ui.js"></script>
-    <script src="js/main.js"></script>
-</body>
-</html>
+      <div class="buttons">
+        <button class="btn btn--primary">Private Events</button>
+        <button class="btn btn--outline">Corporate Events</button>
+      </div>
+
+      <div class="fine-dining">
+        <div class="fine__info">
+          <h3>$500 <span>Fine Dining</span></h3>
+          <p>Bottle of Champagne<br>Fine Sushi Tower For 2+<br>Dessert</p>
+        </div>
+        <img src="https://i.ibb.co/JnWfPt8/finedining.jpg" alt="Fine Dining">
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
 </body>
 </html>

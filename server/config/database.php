@@ -1,10 +1,22 @@
 <?php
+// Включить отображение ошибок для отладки
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+
 $host = $_ENV['DB_HOST'] ?? 'localhost';
 $dbname = $_ENV['DB_NAME'] ?? 'kuro_app';
 $username = $_ENV['DB_USER'] ?? 'root';
 $password = $_ENV['DB_PASS'] ?? '';
 
-$sqlitePath = __DIR__ . '/../database.sqlite';
+// Путь к базе данных - исправлен относительно структуры монтирования
+$sqlitePath = '/var/www/html/server/database/database.sqlite';
+
+// Убедиться, что директория существует и доступна для записи
+$dbDir = dirname($sqlitePath);
+if (!is_dir($dbDir)) {
+    mkdir($dbDir, 0755, true);
+}
 
 try {
     $pdo = new PDO("sqlite:$sqlitePath");

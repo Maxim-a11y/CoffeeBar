@@ -1,5 +1,5 @@
 import { paths, plugins } from './config.js'
-import dartSass from 'sass';
+import dartSass from 'sass'; 
 import gulpSass from 'gulp-sass';
 import autoPrefixer from 'gulp-autoprefixer';
 import cleanCss from 'gulp-clean-css';

@@ -1,4 +1,9 @@
 <?php
+// Включить отображение ошибок для отладки
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
@@ -9,11 +14,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit();
 }
 
-require_once '../config/database.php';
+require_once __DIR__ . '/../server/config/database.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
-$path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-$path = str_replace('/api/', '', $path);
+$requestUri = $_SERVER['REQUEST_URI'] ?? '/';
+$parsedPath = parse_url($requestUri, PHP_URL_PATH);
+
+// Очистка пути от /api/ и query string
+$path = str_replace('/api/', '', $parsedPath);
+$path = trim($path, '/');
+// Убираем index.php если есть в пути
+$path = str_replace('index.php', '', $path);
+$path = trim($path, '/');
+
+// Если путь передается через GET параметр (для rewrite)
+if (isset($_GET['path'])) {
+    $path = trim($_GET['path'], '/');
+}
+
+// Обработка пустого пути или /
+if (empty($path) || $path === 'index.php') {
+    $path = 'health';
+}
 
 switch ($path) {
     case 'users':
@@ -27,7 +49,7 @@ switch ($path) {
         break;
     default:
         http_response_code(404);
-        echo json_encode(['error' => 'Endpoint not found']);
+        echo json_encode(['error' => 'Endpoint not found', 'path' => $path, 'request_uri' => $requestUri]);
         break;
 }
 
