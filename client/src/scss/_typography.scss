@@ -1,0 +1,78 @@
+/*
+===========================
+    FONTS
+===========================
+*/
+
+@font-face {
+    font-family: 'Clicker Script';
+    src: url('../fonts/ClickerScript-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Playfair Display';
+    src: url('../fonts/PlayfairDisplayVariable.woff2') format('woff2-variations');
+    font-weight: 400 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/*
+===========================
+    VARIABLES
+===========================
+*/
+
+$content-color: rgba(112, 112, 112);
+$coffee: rgba(96, 56, 9);
+
+$clicker: 'Clicker Script', sans-serif;
+$playfair: 'Playfair Display', sans-serif;
+
+/*
+===========================
+    TEMPLATES
+===========================
+*/
+
+%title {
+    font-family: $playfair;
+    font-weight: 700;
+    font-size: 54px;
+    color: $coffee;
+}
+
+%button {
+    padding: 15px 27px;
+    border: 1px solid #1E1E1E;
+    border-radius: 24px;
+    color: #1E1E1E;
+    background-color: #F9C06A;
+    cursor: pointer;
+
+    &:hover {
+        border: 1px solid #fff;
+        color: #fff;
+        background-color: transparent;
+        transition: .2s ease;
+    }
+}
+
+/*
+===========================
+    MIXINS
+===========================
+*/
+
+@mixin btn($general: 'true', $fw: 500, $fz: 14px) {
+    font-family: $playfair;
+    font-weight: $fw;
+    font-size: $fz;
+
+    @if $general == 'true' {
+        @extend %button;
+    }
+}

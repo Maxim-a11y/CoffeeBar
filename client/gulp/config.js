@@ -22,7 +22,7 @@ export const paths = {
     scripts: `${srcFolder}/js/**/*.js`,
     img: `${srcFolder}/img/**/*.{jpg,jpeg,png,gif,webp}`,
     svg: `${srcFolder}/img/**/*.svg`,
-    fonts: `${srcFolder}/fonts/**/*`
+    fonts: `${srcFolder}/fonts/**/*.ttf`
   },
   dest: {
     html: `${buildFolder}`,
@@ -37,11 +37,7 @@ export const paths = {
     scripts: `${srcFolder}/js/**/*.js`,
     img: `${srcFolder}/img/**/*.{jpg,jpeg,png,gif,ico,webp}`,
     svg: `${srcFolder}/img/**/*.svg`,
-    fonts: `${srcFolder}/fonts/**/*`
-  },
-  scssFonts: {
-    folder: `${srcFolder}/fonts`,
-    scssFile: `${srcFolder}/scss/fonts.scss`
+    fonts: `${srcFolder}/fonts/**/*.ttf`
   }
 };
 
