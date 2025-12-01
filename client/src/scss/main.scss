@@ -140,13 +140,131 @@ body {
 
 /*
 =========================================
+    main/presentation
+==========================================
+*/
+
+.presentation {
+    padding: 82px 0;
+
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__info {
+        max-width: 585px;
+
+        &-title {
+            @extend %title;
+            margin-bottom: 29px;
+        }
+
+        &-text {
+            max-width: 530px;
+            margin-bottom: 29px;
+        }
+
+        &-button {
+            @include btn($fw: 700, $fz: 16px);
+
+            &:hover {
+                border: 1px solid #1E1E1E;
+                color: #1E1E1E;
+            }
+        }
+    }
+}
+
+/*
+=========================================
+    main/subscribtion
+==========================================
+*/
+
+.subscribtion {
+    background-image: url("../img/subscribtion-bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 80px 0;
+    }
+
+    &__title {
+        @extend %title;
+        color: #fff;
+        margin-bottom: 16px;
+    }
+
+    &__text {
+        color: rgba(#fff, 0.7);
+        line-height: 34px;
+        margin-bottom: 26px;
+    }
+
+    &__form {
+        display: flex;
+        width: 642px;
+        position: relative;
+
+        &-input {
+            width: 100%;
+            padding: 16px 180px 16px 26px;
+            background-color: #fff;
+            border: none;
+            border-radius: 4px;
+
+            &::placeholder {
+                line-height: 34px;
+                color: rgba(0, 0, 0, 0.34);
+            }
+
+            &:focus {
+                outline: none;
+                color: rgba(0, 0, 0, 0.34);
+            }
+        }
+
+        &-button {
+            @include btn($general: 'false', $fw: 700, $fz: 22px);
+            border-radius: 4px;
+            padding: 14.6px 25px;
+            border: none;
+            color: #1E1E1E;
+            background-color: #F9C06A;
+            cursor: pointer;
+            position: absolute;
+            right: 0;
+        }
+    }
+
+    &__img {
+        position: absolute;
+        bottom: -120px;
+        z-index: 2;
+
+        &:last-child {
+            transform: rotateY(180deg);
+            right: 0;
+        }
+    }
+}
+
+/*
+=========================================
     footer
 ==========================================
 */
 
 .footer {
     background-image: url("../img/footer-bg.png");
-    background-position: center;
+    background-position: top;
     flex: 0 0 auto;
     padding-top: 162px;
     padding-bottom: 72px;
