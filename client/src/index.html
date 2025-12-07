@@ -2,12 +2,13 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dmi Sushi | Fine Dining</title>
-    <link rel="stylesheet" href="css/main.min.css"/>
-    <script src="main.min.js" defer></script>
+    <link rel="stylesheet" href="css/main.min.css" />
+    <script src="js/main.min.js" defer></script>
 </head>
+
 <body>
     <div class="wrapper">
         <header class="header">
@@ -24,24 +25,76 @@
                                     <a href="#" class="header__nav-link">Menu</a>
                                 </li>
                                 <li class="header__nav-item">
-                                    <a href="#" class="header__nav-link">About Us</a>
+                                    <a href="about.html" class="header__nav-link">About Us</a>
                                 </li>
                                 <li class="header__nav-item">
                                     <a href="#" class="header__nav-link">Contact Us</a>
                                 </li>
                             </ul>
                         </nav>
-                        <div class="header__buttons">
-                            <button class="header__buttons--signin">Sign In</button>
-                            <button class="button header__buttons--signup">SignUp</button>
-                        </div>
+                        <button class="header__btn-reservation">Table Reservation</button>
                     </div>
                     <div class="header__main">
                         <p class="header__main-text1">We’ve got your morning covered with</p>
                         <h2 class="header__main-logo">Coffee</h2>
-                        <p class="header__main-text2">It is best to start your day with a cup of coffee. Discover the best flavours coffee you will ever have. We provide the best for our customers.</p>
+                        <p class="header__main-text2">It is best to start your day with a cup of coffee. Discover the
+                            best flavours coffee you will ever have. We provide the best for our customers.</p>
                         <button class="header__main-button">Order Now</button>
                     </div>
+                    <dialog class="header__popup-reservation">
+                        <div class="header__popup-reservation-inner">
+                            <div class="header__popup-reservation-top">
+                                <h2 class="header__popup-reservation--title">Bean Scene</h2>
+                                <button class="header__popup-reservation--close"></button>
+                            </div>
+                            <div class="header__popup-reservation--content">
+                                <aside class="header__popup-reservation--aside">
+                                    <h3 class="header__popup-reservation--hours-title">Opening Hours</h3>
+                                    <ul class="header__popup-reservation--list">
+                                        <li class="header__popup-reservation--list-item">
+                                            <h5 class="header__popup-reservation--list-day">Mon - Fri:</h5>
+                                            <p class="header__popup-reservation--list-time">8:00 - 22:00</p>
+                                        </li>
+                                        <li class="header__popup-reservation--list-item">
+                                            <h5 class="header__popup-reservation--list-day">Sat - Sun:</h5>
+                                            <p class="header__popup-reservation--list-time">9:00 - 20:00</p>
+                                        </li>
+                                    </ul>
+                                </aside>
+                                <form class="header__popup-reservation--form">
+                                    <div class="header__popup-reservation--item">
+                                        <label class="header__popup-reservation--label" for="firstName">Name</label>
+                                        <input class="header__popup-reservation--input" type="text" id="firstName"
+                                            name="firstName" pattern="[А-Яа-яA-Za-z\s]{2,30}" required>
+                                    </div>
+                                    <div class="header__popup-reservation--item">
+                                        <label class="header__popup-reservation--label" for="lastName">Surname</label>
+                                        <input class="header__popup-reservation--input" type="text" id="lastName"
+                                            name="lastName" pattern="[А-Яа-яA-Za-z\s]{2,30}" required>
+                                    </div>
+                                    <div class="header__popup-reservation--item">
+                                        <label class="header__popup-reservation--label" for="phone">Phone Number</label>
+                                        <input class="header__popup-reservation--input" type="tel" id="phone"
+                                            name="phone"
+                                            pattern="^[\+]?375[\s\-]?[\(]?(29|33|44|25)[\)]?[\s\-]?\d{3}[\s\-]?\d{2}[\s\-]?\d{2}$"
+                                            placeholder="+375 (29) 123-45-67" required>
+                                    </div>
+                                    <div class="header__popup-reservation--item">
+                                        <label class="header__popup-reservation--label" for="email">Email</label>
+                                        <input class="header__popup-reservation--input" type="email" id="email"
+                                            name="email" pattern="^[a-zA-Z0-9._%+-]+@(gmail\.com|yandex\.ru|mail\.ru)$"
+                                            placeholder="example@gmail.com" required>
+                                    </div>
+                                    <div class="header__popup-reservation--item">
+                                        <label class="header__popup-reservation--label" for="comment">Comment</label>
+                                        <textarea class="header__popup-reservation--textarea" id="comment"
+                                            name="comment" rows="4"></textarea>
+                                    </div>
+                                    <button class="header__popup-reservation--button">Make table reservation</button>
+                                </form>
+                            </div>
+                        </div>
+                    </dialog>
                 </div>
             </div>
         </header>
@@ -51,7 +104,10 @@
                     <div class="presentation__inner">
                         <div class="presentation__info">
                             <h3 class="presentation__info-title">Discover the best coffee</h3>
-                            <p class="presentation__info-text">Bean Scene is a coffee shop that provides you with quality coffee that helps boost your productivity and helps build your mood. Having a cup of coffee is good, but having a cup of real coffee is greater. There is no doubt that you will enjoy this coffee more than others you have ever tasted.</p>
+                            <p class="presentation__info-text">Bean Scene is a coffee shop that provides you with
+                                quality coffee that helps boost your productivity and helps build your mood. Having a
+                                cup of coffee is good, but having a cup of real coffee is greater. There is no doubt
+                                that you will enjoy this coffee more than others you have ever tasted.</p>
                             <a href="#" class="presentation__info-link">
                                 <button class="presentation__info-button">Learn More</button>
                             </a>
@@ -64,7 +120,8 @@
                 <div class="container">
                     <div class="subscribtion__inner">
                         <h3 class="subscribtion__title">Subscribe to get the Latest News</h3>
-                        <p class="subscribtion__text">Don’t miss out on our latest news, updates, tips and special offers</p>
+                        <p class="subscribtion__text">Don’t miss out on our latest news, updates, tips and special
+                            offers</p>
                         <form action="" class="subscribtion__form">
                             <input type="email" class="subscribtion__form-input" placeholder="Enter your email">
                             <button class="subscribtion__form-button">Suscribe</button>
@@ -80,7 +137,9 @@
                 <div class="footer__inner">
                     <div class="footer__social">
                         <h4 class="footer__social-logo">Bean Scene</h4>
-                        <p class="footer__social-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                        <p class="footer__social-text">Lorem Ipsum is simply dummy text of the printing and typesetting
+                            industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when
+                            an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                         <div class="footer__social-media">
                             <img src="img/facebook.svg" class="footer__social-item">
                             <img src="img/instagram.svg" class="footer__social-item">
@@ -126,7 +185,8 @@
                         <h5 class="footer__contacts-logo">Contact Us</h5>
                         <ul class="footer__contacts-list">
                             <li class="footer__contacts-item">
-                                <a href="#" class="footer__contacts-link">Akshya Nagar 1st Block 1st Cross, Rammurthy nagar, Bangalore-560016</a>
+                                <a href="#" class="footer__contacts-link">Akshya Nagar 1st Block 1st Cross, Rammurthy
+                                    nagar, Bangalore-560016</a>
                             </li>
                             <li class="footer__contacts-item">
                                 <a href="#" class="footer__contacts-link">+1 202-918-2132</a>
@@ -144,4 +204,5 @@
         </footer>
     </div>
 </body>
+
 </html>
