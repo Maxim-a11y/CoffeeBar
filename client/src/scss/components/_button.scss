@@ -1,0 +1,28 @@
+@use "../base/variables" as *;
+
+%button {
+    padding: 15px 27px;
+    border: 1px solid #F9C06A;
+    border-radius: 24px;
+    color: #1E1E1E;
+    background-color: #F9C06A;
+    cursor: pointer;
+    transition: .2s ease;
+
+    &:hover {
+        border: 1px solid #fff;
+        color: #fff;
+        background-color: transparent;
+        transition: .2s ease;
+    }
+}
+
+@mixin btn($general: 'true', $fw: 500, $fz: 14px) {
+    font-family: $playfair;
+    font-weight: $fw;
+    font-size: $fz;
+
+    @if $general == 'true' {
+        @extend %button;
+    }
+}

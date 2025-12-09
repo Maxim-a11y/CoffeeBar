@@ -1,0 +1,21 @@
+@use "../base/variables" as *;
+
+%input {
+    font-size: 20px;
+    width: 100%;
+    padding: 16px 26px;
+    background-color: #fff;
+    color: $content-color;
+    border: none;
+    border-radius: 4px;
+
+    &::placeholder {
+        line-height: 34px;
+        color: rgba(0, 0, 0, 0.34);
+    }
+
+    &:focus {
+        outline: none;
+        color: $content-color;
+    }
+}

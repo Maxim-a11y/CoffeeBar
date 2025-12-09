@@ -1,0 +1,109 @@
+@use "../base/reset" as *;
+@use "../base/fonts" as *;
+@use "../base/variables" as *;
+@use "../base/global" as *;
+
+@use "../components/title" as *;
+@use "../components/button" as *;
+@use "../components/form" as *;
+
+.footer {
+    background-image: url("../img/footer-bg.png");
+    background-position: top;
+    padding-top: 162px;
+    padding-bottom: 72px;
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.25);
+        height: 100%;
+        left: 0;
+        right: 0;
+        top: 0;
+    }
+
+    &__inner {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__social {
+        max-width: 380px;
+
+        &-logo {
+            font-family: $clicker;
+            font-weight: 400;
+            font-size: 54px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        &-text {
+            font-family: $playfair;
+            font-weight: 400;
+            font-size: 14px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        &-media {
+            display: flex;
+        }
+
+        &-item {
+            margin-right: 24px;
+            cursor: pointer;
+        }
+    }
+
+    &__about,
+    &__company {
+        max-width: 136px;
+
+        &-logo {
+            font-family: $playfair;
+            font-weight: 700;
+            font-size: 26px;
+            color: #fff;
+            margin-bottom: 55px;
+        }
+
+        &-item {
+            margin-bottom: 15px;
+        }
+
+        &-link {
+            font-family: $playfair;
+            font-weight: 400;
+            font-size: 18px;
+            color: #fff;
+        }
+    }
+
+    &__contacts {
+        max-width: 332px;
+
+        &-logo {
+            font-family: $playfair;
+            font-weight: 700;
+            font-size: 26px;
+            color: #fff;
+            margin-bottom: 31px;
+        }
+
+        &-item {
+            margin-bottom: 15px;
+        }
+
+        &-link {
+            font-family: $playfair;
+            font-weight: 400;
+            font-size: 18px;
+            color: #fff;
+        }
+    }
+}
