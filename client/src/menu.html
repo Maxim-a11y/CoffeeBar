@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dmi Sushi | Fine Dining</title>
+    <link rel="stylesheet" href="css/main.min.css" />
+    <script src="js/main.min.js" defer></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header class="header header--menu-page">
+            <div class="container">
+                <div class="header__inner">
+                    <div class="header__top">
+                        <a href="#" class="header__logo">Bean Scene</a>
+                        <nav class="header__nav">
+                            <ul class="header__nav-list">
+                                <li class="header__nav-item">
+                                    <a href="#" class="header__nav-link">Home</a>
+                                </li>
+                                <li class="header__nav-item">
+                                    <a href="menu.html" class="header__nav-link">Menu</a>
+                                </li>
+                                <li class="header__nav-item">
+                                    <a href="about.html" class="header__nav-link">About Us</a>
+                                </li>
+                                <li class="header__nav-item">
+                                    <a href="#" class="header__nav-link">Contact Us</a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <div class="header__btn">
+                            <button class="header__btn-reservation">Table Reservation</button>
+                            <button class="header__btn-menu">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </button>
+                            <div class="menu">
+                                <div class="menu__inner">
+                                    <div class="menu__top">
+                                        <div class="menu__lang">
+                                            <button class="menu__lang-en">en</button>
+                                            <button class="menu__lang-ru">ru</button>
+                                        </div>
+                                    </div>
+                                    <div class="menu__main">
+                                        <nav class="menu__nav">
+                                            <ul class="menu__nav-list">
+                                                <li class="menu__nav-item">
+                                                    <a href="#" class="menu__nav-link">Home</a>
+                                                </li>
+                                                <li class="menu__nav-item">
+                                                    <a href="#" class="menu__nav-link">Menu</a>
+                                                </li>
+                                                <li class="menu__nav-item">
+                                                    <a href="#" class="menu__nav-link">About Us</a>
+                                                </li>
+                                                <li class="menu__nav-item">
+                                                    <a href="#" class="menu__nav-link">Contact Us</a>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <dialog class="reservation">
+                        <div class="reservation__inner">
+                            <div class="reservation__top">
+                                <h2 class="reservation__title">Bean Scene</h2>
+                                <button class="reservation__close"></button>
+                            </div>
+                            <div class="reservation__content">
+                                <aside class="reservation__aside">
+                                    <h3 class="reservation__hours-title">Opening Hours</h3>
+                                    <ul class="reservation__list">
+                                        <li class="reservation__list-item">
+                                            <h5 class="reservation__day">Mon - Fri:</h5>
+                                            <p class="reservation__time">8:00 - 22:00</p>
+                                        </li>
+                                        <li class="reservation__list-item">
+                                            <h5 class="reservation__day">Sat - Sun:</h5>
+                                            <p class="reservation__time">9:00 - 20:00</p>
+                                        </li>
+                                    </ul>
+                                </aside>
+                                <form class="reservation__form" novalidate>
+                                    <div class="reservation__form-item">
+                                        <label class="reservation__label" for="firstName">Name</label>
+                                        <input class="reservation__input" type="text" id="firstName" name="firstName">
+                                    </div>
+                                    <div class="reservation__form-item">
+                                        <label class="reservation__label" for="lastName">Surname</label>
+                                        <input class="reservation__input" type="text" id="lastName" name="lastName">
+                                    </div>
+                                    <div class="reservation__form-item">
+                                        <label class="reservation__label" for="phone">Phone Number</label>
+                                        <input class="reservation__input" type="tel" id="phone" name="phone"
+                                            placeholder="+375 (29) 123-45-67">
+                                    </div>
+                                    <div class="reservation__form-item">
+                                        <label class="reservation__label" for="email">Email</label>
+                                        <input class="reservation__input" type="email" id="email" name="email"
+                                            placeholder="example@gmail.com">
+                                    </div>
+                                    <div class="reservation__form-item">
+                                        <label class="reservation__label" for="comment">Comment</label>
+                                        <textarea class="reservation__textarea" id="comment" name="comment"
+                                            rows="4"></textarea>
+                                    </div>
+                                    <button type="submit" class="reservation__button">Make table reservation</button>
+                                </form>
+                            </div>
+                        </div>
+                    </dialog>
+                </div>
+            </div>
+        </header>
+        <main class="main">
+            <section class="catalog">
+                <div class="container">
+                    <h2 class="catalog__title">Enjoy Your Coffee</h2>
+                    <div class="catalog__filter">
+                        <button class="catalog__filter-btn catalog__filter-btn--active" data-filter="all">All</button>
+                        <button class="catalog__filter-btn" data-filter="cappuccino">Cappuccino</button>
+                        <button class="catalog__filter-btn" data-filter="latte">Latte</button>
+                        <button class="catalog__filter-btn" data-filter="macchiato">Macchiato</button>
+                        <button class="catalog__filter-btn" data-filter="expresso">Expresso</button>
+                    </div>
+                    <div class="catalog__grid">
+                        <article class="catalog-item" data-category="cappuccino">
+                            <div class="catalog-item__image">
+                                <img src="img/cappuccino.png" alt="Cappuccino">
+                            </div>
+                            <div class="catalog-item__content">
+                                <div class="catalog-item__top">
+                                    <h3 class="catalog-item__name">Cappuccino</h3>
+                                    <span class="catalog-item__price">$6.00</span>
+                                </div>
+                                <p class="catalog-item__desc">Coffee 50%, Milk 50%</p>
+                                <button class="catalog-item__button">Order Now</button>
+                            </div>
+                        </article>
+                        <article class="catalog-item" data-category="latte">
+                            <div class="catalog-item__image">
+                                <img src="img/chai_latte.png" alt="Chai Latte">
+                            </div>
+                            <div class="catalog-item__content">
+                                <div class="catalog-item__top">
+                                    <h3 class="catalog-item__name">Chai Latte</h3>
+                                    <span class="catalog-item__price">$5.50</span>
+                                </div>
+                                <p class="catalog-item__desc">Coffee 30%, Milk 70%</p>
+                                <button class="catalog-item__button">Order Now</button>
+                            </div>
+                        </article>
+                        <article class="catalog-item" data-category="macchiato">
+                            <div class="catalog-item__image">
+                                <img src="img/macchiato.png" alt="Macchiato">
+                            </div>
+                            <div class="catalog-item__content">
+                                <div class="catalog-item__top">
+                                    <h3 class="catalog-item__name">Macchiato</h3>
+                                    <span class="catalog-item__price">$4.50</span>
+                                </div>
+                                <p class="catalog-item__desc">Coffee 80%, Milk 20%</p>
+                                <button class="catalog-item__button">Order Now</button>
+                            </div>
+                        </article>
+                        <article class="catalog-item" data-category="expresso">
+                            <div class="catalog-item__image">
+                                <img src="img/expresso.png" alt="Expresso">
+                            </div>
+                            <div class="catalog-item__content">
+                                <div class="catalog-item__top">
+                                    <h3 class="catalog-item__name">Expresso</h3>
+                                    <span class="catalog-item__price">$4.00</span>
+                                </div>
+                                <p class="catalog-item__desc">Coffee 100%, Milk 0%</p>
+                                <button class="catalog-item__button">Order Now</button>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer class="footer">
+            <div class="container">
+                <div class="footer__inner">
+                    <div class="footer__social">
+                        <h4 class="footer__social-logo">Bean Scene</h4>
+                        <p class="footer__social-text">Lorem Ipsum is simply dummy text of the printing and typesetting
+                            industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when
+                            an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                        <div class="footer__social-media">
+                            <img src="img/facebook.svg" class="footer__social-item">
+                            <img src="img/instagram.svg" class="footer__social-item">
+                            <img src="img/x.svg" class="footer__social-item">
+                            <img src="img/youtube.svg" class="footer__social-item">
+                        </div>
+                    </div>
+                    <div class="footer__about">
+                        <h5 class="footer__about-logo">About</h5>
+                        <ul class="footer__about-list">
+                            <li class="footer__about-item">
+                                <a href="#" class="footer__about-link">catalog</a>
+                            </li>
+                            <li class="footer__about-item">
+                                <a href="#" class="footer__about-link">Features</a>
+                            </li>
+                            <li class="footer__about-item">
+                                <a href="#" class="footer__about-link">News & Blogs</a>
+                            </li>
+                            <li class="footer__about-item">
+                                <a href="#" class="footer__about-link">Help & Supprots</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer__company">
+                        <h5 class="footer__company-logo">Company</h5>
+                        <ul class="footer__compamy-list">
+                            <li class="footer__company-item">
+                                <a href="#" class="footer__company-link">How we work</a>
+                            </li>
+                            <li class="footer__company-item">
+                                <a href="#" class="footer__company-link">Terms of service</a>
+                            </li>
+                            <li class="footer__company-item">
+                                <a href="#" class="footer__company-link">Pricing</a>
+                            </li>
+                            <li class="footer__company-item">
+                                <a href="#" class="footer__company-link">FAQ</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer__contacts">
+                        <h5 class="footer__contacts-logo">Contact Us</h5>
+                        <ul class="footer__contacts-list">
+                            <li class="footer__contacts-item">
+                                <a href="#" class="footer__contacts-link">Akshya Nagar 1st Block 1st Cross, Rammurthy
+                                    nagar, Bangalore-560016</a>
+                            </li>
+                            <li class="footer__contacts-item">
+                                <a href="#" class="footer__contacts-link">+1 202-918-2132</a>
+                            </li>
+                            <li class="footer__contacts-item">
+                                <a href="#" class="footer__contacts-link">beanscene@mail.com</a>
+                            </li>
+                            <li class="footer__contacts-item">
+                                <a href="#" class="footer__contacts-link">www.beanscene.com</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

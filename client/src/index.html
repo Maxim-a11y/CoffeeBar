@@ -22,7 +22,7 @@
                                     <a href="#" class="header__nav-link">Home</a>
                                 </li>
                                 <li class="header__nav-item">
-                                    <a href="#" class="header__nav-link">Menu</a>
+                                    <a href="menu.html" class="header__nav-link">Menu</a>
                                 </li>
                                 <li class="header__nav-item">
                                     <a href="about.html" class="header__nav-link">About Us</a>
@@ -32,65 +32,95 @@
                                 </li>
                             </ul>
                         </nav>
-                        <button class="header__btn-reservation">Table Reservation</button>
+                        <div class="header__btn">
+                            <button class="header__btn-reservation">Table Reservation</button>
+                            <button class="header__btn-menu">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </button>
+                            <div class="menu">
+                                <div class="menu__inner">
+                                    <div class="menu__top">
+                                        <div class="menu__lang">
+                                            <button class="menu__lang-en">en</button>
+                                            <button class="menu__lang-ru">ru</button>
+                                        </div>
+                                    </div>
+                                    <div class="menu__main">
+                                        <nav class="menu__nav">
+                                            <ul class="menu__nav-list">
+                                                <li class="menu__nav-item">
+                                                    <a href="#" class="menu__nav-link">Home</a>
+                                                </li>
+                                                <li class="menu__nav-item">
+                                                    <a href="#" class="menu__nav-link">Menu</a>
+                                                </li>
+                                                <li class="menu__nav-item">
+                                                    <a href="#" class="menu__nav-link">About Us</a>
+                                                </li>
+                                                <li class="menu__nav-item">
+                                                    <a href="#" class="menu__nav-link">Contact Us</a>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="header__main">
-                        <p class="header__main-text1">We’ve got your morning covered with</p>
-                        <h2 class="header__main-logo">Coffee</h2>
-                        <p class="header__main-text2">It is best to start your day with a cup of coffee. Discover the
-                            best flavours coffee you will ever have. We provide the best for our customers.</p>
+                        <p class="header__main-text-top">We’ve got your morning covered with</p>
+                        <h2 class="header__main-title">Coffee</h2>
+                        <p class="header__main-text-bottom">It is best to start your day with a cup of coffee. Discover
+                            the best flavours coffee you will ever have. We provide the best for our customers.</p>
                         <button class="header__main-button">Order Now</button>
                     </div>
-                    <dialog class="header__popup-reservation">
-                        <div class="header__popup-reservation-inner">
-                            <div class="header__popup-reservation-top">
-                                <h2 class="header__popup-reservation--title">Bean Scene</h2>
-                                <button class="header__popup-reservation--close"></button>
+                    <dialog class="reservation">
+                        <div class="reservation__inner">
+                            <div class="reservation__top">
+                                <h2 class="reservation__title">Bean Scene</h2>
+                                <button class="reservation__close"></button>
                             </div>
-                            <div class="header__popup-reservation--content">
-                                <aside class="header__popup-reservation--aside">
-                                    <h3 class="header__popup-reservation--hours-title">Opening Hours</h3>
-                                    <ul class="header__popup-reservation--list">
-                                        <li class="header__popup-reservation--list-item">
-                                            <h5 class="header__popup-reservation--list-day">Mon - Fri:</h5>
-                                            <p class="header__popup-reservation--list-time">8:00 - 22:00</p>
+                            <div class="reservation__content">
+                                <aside class="reservation__aside">
+                                    <h3 class="reservation__hours-title">Opening Hours</h3>
+                                    <ul class="reservation__list">
+                                        <li class="reservation__list-item">
+                                            <h5 class="reservation__day">Mon - Fri:</h5>
+                                            <p class="reservation__time">8:00 - 22:00</p>
                                         </li>
-                                        <li class="header__popup-reservation--list-item">
-                                            <h5 class="header__popup-reservation--list-day">Sat - Sun:</h5>
-                                            <p class="header__popup-reservation--list-time">9:00 - 20:00</p>
+                                        <li class="reservation__list-item">
+                                            <h5 class="reservation__day">Sat - Sun:</h5>
+                                            <p class="reservation__time">9:00 - 20:00</p>
                                         </li>
                                     </ul>
                                 </aside>
-                                <form class="header__popup-reservation--form">
-                                    <div class="header__popup-reservation--item">
-                                        <label class="header__popup-reservation--label" for="firstName">Name</label>
-                                        <input class="header__popup-reservation--input" type="text" id="firstName"
-                                            name="firstName" pattern="[А-Яа-яA-Za-z\s]{2,30}" required>
+                                <form class="reservation__form" novalidate>
+                                    <div class="reservation__form-item">
+                                        <label class="reservation__label" for="firstName">Name</label>
+                                        <input class="reservation__input" type="text" id="firstName" name="firstName">
                                     </div>
-                                    <div class="header__popup-reservation--item">
-                                        <label class="header__popup-reservation--label" for="lastName">Surname</label>
-                                        <input class="header__popup-reservation--input" type="text" id="lastName"
-                                            name="lastName" pattern="[А-Яа-яA-Za-z\s]{2,30}" required>
+                                    <div class="reservation__form-item">
+                                        <label class="reservation__label" for="lastName">Surname</label>
+                                        <input class="reservation__input" type="text" id="lastName" name="lastName">
                                     </div>
-                                    <div class="header__popup-reservation--item">
-                                        <label class="header__popup-reservation--label" for="phone">Phone Number</label>
-                                        <input class="header__popup-reservation--input" type="tel" id="phone"
-                                            name="phone"
-                                            pattern="^[\+]?375[\s\-]?[\(]?(29|33|44|25)[\)]?[\s\-]?\d{3}[\s\-]?\d{2}[\s\-]?\d{2}$"
-                                            placeholder="+375 (29) 123-45-67" required>
+                                    <div class="reservation__form-item">
+                                        <label class="reservation__label" for="phone">Phone Number</label>
+                                        <input class="reservation__input" type="tel" id="phone" name="phone"
+                                            placeholder="+375 (29) 123-45-67">
                                     </div>
-                                    <div class="header__popup-reservation--item">
-                                        <label class="header__popup-reservation--label" for="email">Email</label>
-                                        <input class="header__popup-reservation--input" type="email" id="email"
-                                            name="email" pattern="^[a-zA-Z0-9._%+-]+@(gmail\.com|yandex\.ru|mail\.ru)$"
-                                            placeholder="example@gmail.com" required>
+                                    <div class="reservation__form-item">
+                                        <label class="reservation__label" for="email">Email</label>
+                                        <input class="reservation__input" type="email" id="email" name="email"
+                                            placeholder="example@gmail.com">
                                     </div>
-                                    <div class="header__popup-reservation--item">
-                                        <label class="header__popup-reservation--label" for="comment">Comment</label>
-                                        <textarea class="header__popup-reservation--textarea" id="comment"
-                                            name="comment" rows="4"></textarea>
+                                    <div class="reservation__form-item">
+                                        <label class="reservation__label" for="comment">Comment</label>
+                                        <textarea class="reservation__textarea" id="comment" name="comment"
+                                            rows="4"></textarea>
                                     </div>
-                                    <button class="header__popup-reservation--button">Make table reservation</button>
+                                    <button type="submit" class="reservation__button">Make table reservation</button>
                                 </form>
                             </div>
                         </div>

@@ -1,12 +1,36 @@
-/*
-===============================
-    front-end
-===============================
-*/
+import { initReservationValidation } from './modules/formValidation.js';
 
-const reservation = document.querySelector('.header__popup-reservation');
+const reservation = document.querySelector('.reservation');
 const openReservation = document.querySelector('.header__btn-reservation');
-const closeReservation = document.querySelector('.header__popup-reservation--close');
+const closeReservation = document.querySelector('.reservation__close');
+
+const menu = document.querySelector('.menu');
+const menuBtn = document.querySelector('.header__btn-menu');
+
+const catalog = document.querySelector('.catalog');
+const catalogBtn = document.querySelector('.header__btn-catalog');
+
+const filterButtons = document.querySelectorAll('.catalog__filter-btn');
+const catalogItems = document.querySelectorAll('.catalog-item');
+
+initReservationValidation();
+
+const filtercatalog = category => {
+    catalogItems.forEach(item => {
+        const itemCategory = item.getAttribute('data-category');
+
+        if (category === 'all' || category === itemCategory) {
+            item.style.display = 'flex';
+            item.classList.remove('hide');
+            item.classList.add('show');
+        } 
+        else {
+            item.style.display = 'none';
+            item.classList.remove('show');
+            item.classList.add('hide');
+        }
+    });
+}
 
 openReservation.addEventListener('click', () => {
     reservation.showModal();
@@ -29,8 +53,19 @@ reservation.addEventListener('cancel', () => {
     document.body.classList.remove('scroll-block');
 });
 
+menuBtn.addEventListener('click', () => {
+    menuBtn.classList.toggle('header__btn-menu--active');
+    menu.classList.toggle('menu--active');
+});
 
-
+filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        filterButtons.forEach(btn => btn.classList.remove('catalog__filter-btn--active'));
+        button.classList.add('catalog__filter-btn--active');
+        const filterValue = button.getAttribute('data-filter');
+        filtercatalog(filterValue);
+    });
+});
 
 /*
 ===============================

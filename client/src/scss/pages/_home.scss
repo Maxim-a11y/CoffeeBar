@@ -2,6 +2,7 @@
 @use "../base/fonts" as *;
 @use "../base/variables" as *;
 @use "../base/global" as *;
+@use "../base/mixins" as *;
 
 @use "../components/title" as *;
 @use "../components/button" as *;
@@ -23,19 +24,35 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        gap: 40px;
+
+        @include adaptive-ui($laptop) {
+            justify-content: center;
+        }
     }
 
     &__info {
+        flex-shrink: 0;
         max-width: 585px;
 
         &-title {
             @extend %title;
             margin-bottom: 29px;
+
+            @include adaptive-ui($tablet) {
+                font-size: 46px;
+                line-height: 50px;
+            }
         }
 
         &-text {
             margin-bottom: 29px;
             line-height: 34px;
+
+            @include adaptive-ui($tablet) {
+                line-height: 32px;
+                font-size: 18px;
+            }
         }
 
         &-button {
@@ -46,6 +63,28 @@
                 color: #1E1E1E;
             }
         }
+
+        @include adaptive-ui($laptop) {
+            flex-shrink: 1;
+        }
+
+        @include adaptive-ui($tablet) {
+            text-align: center;
+        }
+    }
+
+    &__img {
+        flex-shrink: 1;
+        min-width: 40%;
+        height: auto;
+
+        @include adaptive-ui($tablet) {
+            display: none;
+        }
+    }
+
+    @include adaptive-ui($mobile) {
+        padding: 41px 0;
     }
 }
 
@@ -62,44 +101,78 @@
     position: relative;
 
     &__inner {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        max-width: 980px;
         padding: 80px 0;
+        text-align: center;
+        margin: 0 auto;
+
+        @include adaptive-ui($mobile) {
+            padding: 40px 0;
+        }
     }
 
     &__title {
         @extend %title;
         color: #fff;
         margin-bottom: 16px;
+        margin-left: auto;
+        margin-right: auto;
+
+        @include adaptive-ui($tablet) {
+            font-size: 40px;
+            line-height: 50px;
+        }
+
+        @include adaptive-ui($premobile) {
+            max-width: 370px;
+        }
     }
 
     &__text {
         color: rgba(#fff, 0.7);
         line-height: 34px;
         margin-bottom: 26px;
+        margin-left: auto;
+        margin-right: auto;
+
+        @include adaptive-ui($premobile) {
+            max-width: 450px;
+        }
     }
 
     &__form {
         display: flex;
-        width: 642px;
-        position: relative;
+        max-width: 642px;
+        margin: 0 auto;
 
         &-input {
             @extend %input;
-            padding: 16px 180px 16px 26px;
+            border-radius: 0;
+            border-top-left-radius: 4px;
+            border-bottom-left-radius: 4px;
+
+            @include adaptive-ui($mobile) {
+                border-radius: 4px;
+                margin-bottom: 16px;
+                text-align: center;
+            }
         }
 
         &-button {
-            @include btn($general: 'false', $fw: 700, $fz: 22px);
-            border-radius: 4px;
-            padding: 14.6px 25px;
-            border: none;
-            color: #1E1E1E;
-            background-color: #F9C06A;
-            cursor: pointer;
-            position: absolute;
-            right: 0;
+            @include btn($fw: 700, $fz: 22px);
+            border-radius: 0;
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+
+            @include adaptive-ui($mobile) {
+                border-radius: 24px;
+                align-self: center;
+            }
+        }
+
+        @include adaptive-ui($mobile) {
+            flex-direction: column;
+            max-width: 342px;
         }
     }
 
@@ -112,5 +185,21 @@
             transform: rotateY(180deg);
             right: 0;
         }
+
+        @include adaptive-ui($desktop) {
+            width: 250px;
+            height: auto;
+        }
+
+        @include adaptive-ui($laptop) {
+            width: 190px;
+            bottom: -140px;
+            height: auto;
+        }
+
+        @include adaptive-ui($tablet) {
+            display: none;
+        }
+
     }
 }
