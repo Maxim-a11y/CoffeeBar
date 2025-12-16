@@ -1,5 +1,9 @@
 import { initReservationValidation } from './modules/formValidation.js';
 
+import Swiper from 'swiper';
+import { Navigation } from 'swiper/modules';
+import 'swiper/css';
+
 const reservation = document.querySelector('.reservation');
 const openReservation = document.querySelector('.header__btn-reservation');
 const closeReservation = document.querySelector('.reservation__close');
@@ -65,6 +69,31 @@ filterButtons.forEach(button => {
         const filterValue = button.getAttribute('data-filter');
         filtercatalog(filterValue);
     });
+});
+
+const swiper = new Swiper('.prodreview__slider', {
+    modules: [Navigation],
+    slidesPerView: 4, 
+    spaceBetween: 20, 
+    loop: true, 
+    navigation: {
+        nextEl: '.prodreview__switch--last',
+        prevEl: '.prodreview__switch--first',
+    },
+    breakpoints: {
+        480: {
+            slidesPerView: 1, 
+        },
+        900: {
+            slidesPerView: 2, 
+        },
+        1180: {
+            slidesPerView: 3, 
+        },
+        1250: {
+            sliderPerView: 4
+        }
+    }
 });
 
 /*
