@@ -148,14 +148,15 @@ if (catalog) {
     loadProducts();
 }
 
-const swiper = new Swiper('.prodreview__slider', {
+const prodreviewSwiper = new Swiper('.prodreview__slider', {
     modules: [Navigation],
     slidesPerView: 4, 
+    speed: 800,
     spaceBetween: 20, 
     loop: true, 
     navigation: {
-        nextEl: '.prodreview__switch--last',
         prevEl: '.prodreview__switch--first',
+        nextEl: '.prodreview__switch--last'
     },
     breakpoints: {
         480: {
@@ -168,7 +169,20 @@ const swiper = new Swiper('.prodreview__slider', {
             slidesPerView: 3, 
         },
         1250: {
-            sliderPerView: 4
+            slidesPerView: 4
         }
     }
+});
+
+const feedbackSwiper = new Swiper('.feedback__slider', {
+    modules: [Navigation],
+    loop: true,
+    slidesPerView: 1, 
+    spaceBetween: 30, 
+    speed: 800, 
+    
+    navigation: {
+        nextEl: '.feedback__switch--next',
+        prevEl: '.feedback__switch--prev',
+    },
 });

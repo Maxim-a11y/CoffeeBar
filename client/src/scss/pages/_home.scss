@@ -214,10 +214,6 @@
             }
         }
     }
-
-    @include adaptive-ui($laptop) {
-        padding: 0 80px 80px 80px;
-    }
 }
 
 
@@ -273,30 +269,54 @@
         margin-bottom: 45px;
     }
 
+    // Фон блока (желтоватый)
     &__content {
         background-color: rgba(255, 249, 241, 1);
+        padding: 0 20px; // Безопасные отступы по бокам
+    }
 
-        &-slider {
-            position: relative;
-        }
+    // Обертка для кнопок
+    &__slider-wrapper {
+        position: relative;
+        max-width: 980px; // Ограничиваем ширину контента
+        margin: 0 auto;
+    }
 
-        &-item {
-            border: 1px solid rgba(249, 192, 106, 0.42);
-            padding: 54px 29px 0 29px;
-            position: relative;
-        }
+    // Сам слайдер (окно просмотра)
+    &__slider {
+        width: 100%;
+        overflow: hidden;
+        // Важно: отступ снизу, чтобы картинка person.jpg не обрезалась
+        padding-bottom: 60px;
+    }
 
-        &-pretext {
+    // Слайд (карточка)
+    &__item {
+        border: 1px solid rgba(249, 192, 106, 0.42);
+        padding: 54px 29px 0 29px;
+        box-sizing: border-box;
+        position: relative;
+        background-color: transparent; // Фон уже у родителя, но можно и тут
+
+        &-quote {
             @extend %title;
             font-size: 220px;
             text-align: left;
             line-height: 50px;
+            position: absolute;
+            top: 50px;
+            left: 20px;
+            opacity: 0.5; // Чтобы не перекрывало текст слишком сильно
+            pointer-events: none;
         }
 
         &-text {
             max-width: 780px;
             margin: 0 auto 28px auto;
             font-size: 18px;
+            line-height: 1.5;
+            position: relative; // Чтобы быть над кавычкой
+            z-index: 2;
         }
 
         &-title {
@@ -305,33 +325,59 @@
             margin-bottom: 4px;
         }
 
+        &-role {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
         &-img {
             width: 112px;
             border-radius: 12px;
             margin: 0 auto;
+            // Сдвигаем вниз, компенсируется padding-bottom у .feedback__slider
             transform: translateY(40px);
+            display: block;
+        }
+    }
+
+    // Кнопки навигации
+    &__switch {
+        @extend %button;
+        position: absolute;
+        top: 40%; // Чуть выше центра, визуально
+        transform: translateY(-50%);
+        padding: 33px;
+        z-index: 10;
+        cursor: pointer;
+
+        &--prev {
+            left: -80px; // Выносим за пределы контента
+
+            @include adaptive-ui($tablet) {
+                left: -20px; // На планшетах прижимаем ближе
+                padding: 15px; // Уменьшаем размер кнопок
+            }
         }
 
-        &-switch {
-            @extend %button;
-            position: absolute;
-            top: 37%;
-            padding: 33px;
+        &--next {
+            right: -80px;
+            transform: translateY(-50%) rotate(180deg);
 
-            &:first-child {
-                left: -56px;
+            @include adaptive-ui($tablet) {
+                right: -20px;
+                padding: 15px;
             }
+        }
 
-            &:last-child {
-                right: -56px;
-                transform: rotate(180deg);
-            }
+        &:hover {
+            border: 1px solid #F9C06A;
+            background-color: #F9C06A;
+            color: #1E1E1E;
+        }
 
-            &:hover {
-                border: 1px solid #F9C06A;
-                background-color: #F9C06A;
-                color: #1E1E1E;
-            }
+        // Скрываем кнопки на совсем маленьких экранах, если мешают
+        @media (max-width: 600px) {
+            display: none;
         }
     }
 }
