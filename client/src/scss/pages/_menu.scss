@@ -1,4 +1,5 @@
 @use "../base/variables" as *;
+@use "../base/mixins" as *;
 @use "../components/title" as *;
 @use "../components/button" as *;
 
@@ -47,6 +48,14 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 30px;
+
+        @include adaptive-ui($desktop) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include adaptive-ui($tablet) {
+            grid-template-columns: 1fr;
+        }
     }
 }
 

@@ -2,24 +2,224 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dmi Sushi | Fine Dining</title>
-    <link rel="stylesheet" href="css/main.min.css"/>
-    <script src="main.min.js" defer></script>
+    <link rel="stylesheet" href="css/main.min.css" />
+    <script src="js/main.min.js" defer></script>
 </head>
+
 <body>
     <div class="wrapper">
-        <header></header>
+        <header class="header header--menu-page">
+            <div class="container">
+                <div class="header__inner">
+                    <div class="header__top">
+                        <a href="index.html" class="header__logo">Bean Scene</a>
+                        <nav class="header__nav">
+                            <ul class="header__nav-list">
+                                <li class="header__nav-item">
+                                    <a href="index.html" class="header__nav-link">Home</a>
+                                </li>
+                                <li class="header__nav-item">
+                                    <a href="menu.html" class="header__nav-link">Menu</a>
+                                </li>
+                                <li class="header__nav-item">
+                                    <a href="about.html" class="header__nav-link">About Us</a>
+                                </li>
+                                <li class="header__nav-item">
+                                    <a href="#" class="header__nav-link">Contact Us</a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <div class="header__btn">
+                            <button class="header__btn-reservation">Table Reservation</button>
+                            <button class="header__btn-menu">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </button>
+                            <div class="menu">
+                                <div class="menu__inner">
+                                    <div class="menu__top">
+                                        <div class="menu__lang">
+                                            <button class="menu__lang-en">en</button>
+                                            <button class="menu__lang-ru">ru</button>
+                                        </div>
+                                    </div>
+                                    <div class="menu__main">
+                                        <nav class="menu__nav">
+                                            <ul class="menu__nav-list">
+                                                <li class="menu__nav-item">
+                                                    <a href="#" class="menu__nav-link">Home</a>
+                                                </li>
+                                                <li class="menu__nav-item">
+                                                    <a href="#" class="menu__nav-link">Menu</a>
+                                                </li>
+                                                <li class="menu__nav-item">
+                                                    <a href="#" class="menu__nav-link">About Us</a>
+                                                </li>
+                                                <li class="menu__nav-item">
+                                                    <a href="#" class="menu__nav-link">Contact Us</a>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <dialog class="reservation">
+                        <div class="reservation__inner">
+                            <div class="reservation__top">
+                                <h2 class="reservation__title">Bean Scene</h2>
+                                <button class="reservation__close"></button>
+                            </div>
+                            <div class="reservation__content">
+                                <aside class="reservation__aside">
+                                    <h3 class="reservation__hours-title">Opening Hours</h3>
+                                    <ul class="reservation__list">
+                                        <li class="reservation__list-item">
+                                            <h5 class="reservation__day">Mon - Fri:</h5>
+                                            <p class="reservation__time">8:00 - 22:00</p>
+                                        </li>
+                                        <li class="reservation__list-item">
+                                            <h5 class="reservation__day">Sat - Sun:</h5>
+                                            <p class="reservation__time">9:00 - 20:00</p>
+                                        </li>
+                                    </ul>
+                                </aside>
+                                <form class="reservation__form" novalidate>
+                                    <div class="reservation__form-item">
+                                        <label class="reservation__label" for="firstName">Name</label>
+                                        <input class="reservation__input" type="text" id="firstName" name="firstName">
+                                    </div>
+                                    <div class="reservation__form-item">
+                                        <label class="reservation__label" for="lastName">Surname</label>
+                                        <input class="reservation__input" type="text" id="lastName" name="lastName">
+                                    </div>
+                                    <div class="reservation__form-item">
+                                        <label class="reservation__label" for="phone">Phone Number</label>
+                                        <input class="reservation__input" type="tel" id="phone" name="phone"
+                                            placeholder="+375 (29) 123-45-67">
+                                    </div>
+                                    <div class="reservation__form-item">
+                                        <label class="reservation__label" for="email">Email</label>
+                                        <input class="reservation__input" type="email" id="email" name="email"
+                                            placeholder="example@gmail.com">
+                                    </div>
+                                    <div class="reservation__form-item">
+                                        <label class="reservation__label" for="comment">Comment</label>
+                                        <textarea class="reservation__textarea" id="comment" name="comment"
+                                            rows="4"></textarea>
+                                    </div>
+                                    <button type="submit" class="reservation__button">Make table reservation</button>
+                                </form>
+                            </div>
+                        </div>
+                    </dialog>
+                </div>
+            </div>
+        </header>
         <main class="main">
-            
+            <!-- Секция Истории -->
+            <section class="story">
+                <div class="container">
+                    <div class="story__inner">
+                        <div class="story__img-box">
+                            <!-- Используем картинку из существующего набора для примера или плейсхолдер -->
+                            <img src="img/coffee_blast.png" class="story__deco" alt="deco">
+                            <img src="img/" class="story__img" alt="Our Story">
+                        </div>
+                        <div class="story__content">
+                            <h3 class="story__title">It started with a bean</h3>
+                            <p class="story__text">
+                                Founded in 2010, Bean Scene started as a small corner shop with a big dream: to serve
+                                the perfect cup of coffee. We believe that coffee is more than just a drink; it is a
+                                ritual, a moment of pause, and a catalyst for connection.
+                            </p>
+                            <p class="story__text">
+                                Over the years, we have traveled the world to source the finest beans, establishing
+                                direct trade relationships with farmers who share our passion for quality and
+                                sustainability.
+                            </p>
+                            <div class="story__signature">Bean Scene Team</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Секция Статистики -->
+            <section class="stats">
+                <div class="container">
+                    <div class="stats__inner">
+                        <div class="stats__item">
+                            <span class="stats__number">12+</span>
+                            <span class="stats__label">Years of Experience</span>
+                        </div>
+                        <div class="stats__item">
+                            <span class="stats__number">85k</span>
+                            <span class="stats__label">Cups Served</span>
+                        </div>
+                        <div class="stats__item">
+                            <span class="stats__number">15</span>
+                            <span class="stats__label">Awards Won</span>
+                        </div>
+                        <div class="stats__item">
+                            <span class="stats__number">100%</span>
+                            <span class="stats__label">Organic Beans</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Секция Команды -->
+            <section class="team">
+                <div class="container">
+                    <div class="team__inner">
+                        <h2 class="team__title">Meet the Makers</h2>
+                        <p class="team__subtitle">The passionate people behind every cup</p>
+
+                        <div class="team__grid">
+                            <!-- Member 1 -->
+                            <div class="team__card">
+                                <div class="team__img-wrapper">
+                                    <img src="img/" class="team__img" alt="Barista">
+                                </div>
+                                <h4 class="team__name">Alex Morgan</h4>
+                                <p class="team__role">Head Barista</p>
+                            </div>
+
+                            <!-- Member 2 (дублируем картинку для примера) -->
+                            <div class="team__card">
+                                <div class="team__img-wrapper">
+                                    <img src="img/" class="team__img" alt="Chef">
+                                </div>
+                                <h4 class="team__name">Sarah Jenks</h4>
+                                <p class="team__role">Pastry Chef</p>
+                            </div>
+
+                            <!-- Member 3 -->
+                            <div class="team__card">
+                                <div class="team__img-wrapper">
+                                    <img src="img/" class="team__img" alt="Manager">
+                                </div>
+                                <h4 class="team__name">Michael Scott</h4>
+                                <p class="team__role">Shop Manager</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </main>
         <footer class="footer">
             <div class="container">
                 <div class="footer__inner">
                     <div class="footer__social">
                         <h4 class="footer__social-logo">Bean Scene</h4>
-                        <p class="footer__social-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                        <p class="footer__social-text">Lorem Ipsum is simply dummy text of the printing and typesetting
+                            industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when
+                            an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                         <div class="footer__social-media">
                             <img src="img/facebook.svg" class="footer__social-item">
                             <img src="img/instagram.svg" class="footer__social-item">
@@ -31,7 +231,7 @@
                         <h5 class="footer__about-logo">About</h5>
                         <ul class="footer__about-list">
                             <li class="footer__about-item">
-                                <a href="#" class="footer__about-link">Menu</a>
+                                <a href="#" class="footer__about-link">catalog</a>
                             </li>
                             <li class="footer__about-item">
                                 <a href="#" class="footer__about-link">Features</a>
@@ -65,7 +265,8 @@
                         <h5 class="footer__contacts-logo">Contact Us</h5>
                         <ul class="footer__contacts-list">
                             <li class="footer__contacts-item">
-                                <a href="#" class="footer__contacts-link">Akshya Nagar 1st Block 1st Cross, Rammurthy nagar, Bangalore-560016</a>
+                                <a href="#" class="footer__contacts-link">Akshya Nagar 1st Block 1st Cross, Rammurthy
+                                    nagar, Bangalore-560016</a>
                             </li>
                             <li class="footer__contacts-item">
                                 <a href="#" class="footer__contacts-link">+1 202-918-2132</a>
@@ -83,4 +284,5 @@
         </footer>
     </div>
 </body>
+
 </html>

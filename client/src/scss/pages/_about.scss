@@ -1,0 +1,231 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+@use "../components/title" as *;
+
+/*
+=========================================
+    about/story
+==========================================
+*/
+
+.story {
+    padding: 100px 0;
+    overflow: hidden;
+
+    &__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 60px;
+
+        @include adaptive-ui($tablet) {
+            flex-direction: column-reverse;
+            gap: 40px;
+            text-align: center;
+        }
+    }
+
+    &__img-box {
+        position: relative;
+        flex: 0 0 45%;
+        
+        @include adaptive-ui($tablet) {
+            width: 80%;
+        }
+    }
+
+    &__img {
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+        position: relative;
+        z-index: 2;
+        box-shadow: 10px 10px 30px rgba(0,0,0,0.1);
+    }
+
+    &__deco {
+        position: absolute;
+        top: -40px;
+        left: -40px;
+        z-index: 1;
+        opacity: 0.6;
+        transform: rotate(-15deg);
+        max-width: 200px;
+
+        @include adaptive-ui($mobile) {
+            display: none;
+        }
+    }
+
+    &__content {
+        flex: 0 0 50%;
+    }
+
+    &__title {
+        @extend %title;
+        margin-bottom: 24px;
+        line-height: 1.2;
+
+        @include adaptive-ui($tablet) {
+            font-size: 42px;
+        }
+    }
+
+    &__text {
+        margin-bottom: 20px;
+        line-height: 1.6;
+        font-size: 18px;
+    }
+
+    &__signature {
+        font-family: $clicker; /* Шрифт рукописный, если он подключен, иначе fallback */
+        font-size: 40px;
+        color: #F9C06A;
+        margin-top: 30px;
+    }
+}
+
+/*
+=========================================
+    about/stats
+==========================================
+*/
+
+.stats {
+    background-color: #442808; /* Темнее основного кофейного */
+    padding: 60px 0;
+    color: #fff;
+
+    &__inner {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+
+        @include adaptive-ui($mobile) {
+            flex-direction: column;
+            gap: 40px;
+        }
+    }
+
+    &__item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    &__number {
+        font-family: $playfair;
+        font-weight: 700;
+        font-size: 54px;
+        color: #F9C06A;
+        margin-bottom: 10px;
+
+        @include adaptive-ui($tablet) {
+            font-size: 42px;
+        }
+    }
+
+    &__label {
+        font-size: 18px;
+        opacity: 0.8;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+}
+
+/*
+=========================================
+    about/team
+==========================================
+*/
+
+.team {
+    padding: 100px 0;
+    background-color: rgba(255, 249, 241, 1); /* Цвет фона как в feedback */
+
+    &__inner {
+        text-align: center;
+    }
+
+    &__title {
+        @extend %title;
+        margin-bottom: 12px;
+    }
+
+    &__subtitle {
+        margin-bottom: 60px;
+        font-size: 20px;
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+
+        @include adaptive-ui($laptop) {
+            gap: 20px;
+        }
+
+        @include adaptive-ui($tablet) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include adaptive-ui($mobile) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &__card {
+        background: #fff;
+        padding: 20px;
+        border: 1px solid rgba(249, 192, 106, 0.2);
+        transition: transform 0.3s ease;
+
+        &:hover {
+            transform: translateY(-10px);
+            border-color: #F9C06A;
+        }
+    }
+
+    &__img-wrapper {
+        width: 100%;
+        height: 350px;
+        overflow: hidden;
+        margin-bottom: 24px;
+        border-radius: 4px;
+
+        @include adaptive-ui($laptop) {
+            height: 280px;
+        }
+    }
+
+    &__img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+
+        /* Эффект зума при наведении на карточку */
+        .team__card:hover & {
+            transform: scale(1.05);
+        }
+    }
+
+    &__name {
+        font-family: $playfair;
+        font-weight: 700;
+        font-size: 24px;
+        color: $coffee;
+        margin-bottom: 8px;
+    }
+
+    &__role {
+        font-size: 16px;
+        color: #F9C06A;
+        text-transform: uppercase;
+        font-weight: 500;
+        letter-spacing: 0.05em;
+    }
+}
