@@ -4,9 +4,7 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./client/dist:/var/www/html/client/dist:ro
       - ./server/api:/var/www/html/api
-      - ./server/server:/var/www/html/server
       - ./server/config:/var/www/html/server/config:ro
       - ./nginx.conf:/etc/nginx/sites-available/default:ro
     environment:
@@ -15,4 +13,3 @@ services:
       - DB_USER=root
       - DB_PASS=
     restart: unless-stopped
-
