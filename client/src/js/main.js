@@ -147,6 +147,7 @@ if (catalog) {
     setupFilters();
     loadProducts();
 }
+<<<<<<< HEAD
 
 const swiper = new Swiper('.prodreview__slider', {
     modules: [Navigation],
@@ -172,6 +173,8 @@ const swiper = new Swiper('.prodreview__slider', {
         }
     }
 });
+=======
+>>>>>>> 929b823 (fix nginx config, fix docker, add dinamic fetch productCard from api)
 
 /*
 ===============================
