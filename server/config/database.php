@@ -4,12 +4,6 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 
-$host = $_ENV['DB_HOST'] ?? 'localhost';
-$dbname = $_ENV['DB_NAME'] ?? 'kuro_app';
-$username = $_ENV['DB_USER'] ?? 'root';
-$password = $_ENV['DB_PASS'] ?? '';
-
-// Путь к базе данных - исправлен относительно структуры монтирования
 $sqlitePath = '/var/www/html/server/database/database.sqlite';
 
 // Убедиться, что директория существует и доступна для записи
@@ -27,58 +21,82 @@ try {
     die("Connection failed: " . $e->getMessage());
 }
 
-function createTables($pdo) {
+/**
+ * Минимальная схема БД для кофейни:
+ *  - users    — пользователи с логином и захешированным паролем
+ *  - products — карточки кофейных напитков
+ */
+function createTables(PDO $pdo): void {
+    // Таблица пользователей
     $pdo->exec("
         CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name VARCHAR(100) NOT NULL,
-            email VARCHAR(100) UNIQUE NOT NULL,
-            password VARCHAR(255),
+            name TEXT NOT NULL,
+            email TEXT UNIQUE NOT NULL,
+            password TEXT NOT NULL,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
             updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
-        )
+        );
     ");
-    
+
+    // Таблица товаров (кофе)
     $pdo->exec("
-        CREATE TABLE IF NOT EXISTS sessions (
+        CREATE TABLE IF NOT EXISTS products (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            user_id INTEGER,
-            token VARCHAR(255) UNIQUE NOT NULL,
-            expires_at DATETIME NOT NULL,
-            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-            FOREIGN KEY (user_id) REFERENCES users (id)
-        )
-    ");
-    
-    $pdo->exec("
-        CREATE TABLE IF NOT EXISTS tasks (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            user_id INTEGER,
-            title VARCHAR(255) NOT NULL,
+            name TEXT NOT NULL,
             description TEXT,
-            status VARCHAR(50) DEFAULT 'pending',
-            priority VARCHAR(20) DEFAULT 'medium',
-            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-            FOREIGN KEY (user_id) REFERENCES users (id)
-        )
+            price REAL NOT NULL,
+            category TEXT NOT NULL,
+            image TEXT NOT NULL,
+            is_featured INTEGER DEFAULT 0,
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+        );
     ");
-    
-    $stmt = $pdo->query("SELECT COUNT(*) as count FROM users");
-    $result = $stmt->fetch();
-    
-    if ($result['count'] == 0) {
-        $pdo->exec("
-            INSERT INTO users (name, email) VALUES 
-            ('Admin User', 'admin@example.com'),
-            ('Test User', 'test@example.com')
+
+    seedInitialData($pdo);
+}
+
+/**
+ * Первичное заполнение БД тестовыми пользователями и кофейными товарами.
+ */
+function seedInitialData(PDO $pdo): void {
+    // Пользователи
+    $stmt = $pdo->query("SELECT COUNT(*) AS cnt FROM users");
+    $usersCount = (int) ($stmt->fetch()['cnt'] ?? 0);
+
+    if ($usersCount === 0) {
+        $passwordAdmin = password_hash('admin123', PASSWORD_DEFAULT);
+        $passwordUser  = password_hash('user123', PASSWORD_DEFAULT);
+
+        $insertUser = $pdo->prepare("
+            INSERT INTO users (name, email, password)
+            VALUES (:name, :email, :password)
         ");
-        
+
+        $insertUser->execute([
+            ':name'     => 'Admin',
+            ':email'    => 'admin@coffee.local',
+            ':password' => $passwordAdmin,
+        ]);
+
+        $insertUser->execute([
+            ':name'     => 'Guest',
+            ':email'    => 'guest@coffee.local',
+            ':password' => $passwordUser,
+        ]);
+    }
+
+    // Продукты
+    $stmt = $pdo->query("SELECT COUNT(*) AS cnt FROM products");
+    $productsCount = (int) ($stmt->fetch()['cnt'] ?? 0);
+
+    if ($productsCount === 0) {
         $pdo->exec("
-            INSERT INTO tasks (user_id, title, description, status, priority) VALUES 
-            (1, 'Setup project', 'Initialize the project structure', 'completed', 'high'),
-            (2, 'Create API', 'Build REST API endpoints', 'in_progress', 'high'),
-            (1, 'Write tests', 'Add unit and integration tests', 'pending', 'medium')
+            INSERT INTO products (name, description, price, category, image, is_featured) VALUES
+            ('Cappuccino', 'Coffee 50%, Milk 50%', 6.00, 'cappuccino', 'cappuccino.png', 1),
+            ('Chai Latte', 'Coffee 30%, Milk 70%', 5.50, 'latte', 'chai_latte.png', 1),
+            ('Macchiato', 'Coffee 80%, Milk 20%', 4.50, 'macchiato', 'macchiato.png', 0),
+            ('Expresso', 'Coffee 100%, Milk 0%', 4.00, 'expresso', 'expresso.png', 0)
         ");
     }
 }
