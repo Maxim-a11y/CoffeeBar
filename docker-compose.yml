@@ -6,7 +6,6 @@ services:
     volumes:
       - ./server/api:/var/www/html/api
       - ./server/config:/var/www/html/server/config:ro
-      - ./nginx.conf:/etc/nginx/sites-available/default:ro
     environment:
       - DB_HOST=localhost
       - DB_NAME=kuro_app
