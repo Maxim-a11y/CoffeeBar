@@ -4,10 +4,13 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./client/dist:/var/www/html/client/dist:ro
+      # Монтируем исходники для разработки (опционально, можно закомментировать)
+      # - ./client/src:/var/www/html/client/src:ro
+      # - ./client/dist:/var/www/html/client/dist:ro
+      # Монтируем API и конфиги для разработки
       - ./server/api:/var/www/html/api
-      - ./server/server:/var/www/html/server
       - ./server/config:/var/www/html/server/config:ro
+      # Монтируем nginx конфиг
       - ./nginx.conf:/etc/nginx/sites-available/default:ro
     environment:
       - DB_HOST=localhost
